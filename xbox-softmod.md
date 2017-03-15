@@ -1,5 +1,7 @@
-# Xbox Softmod (Original Xbox Classic Console)
+# Xbox Softmod or TSOP Flash (Original Xbox Classic Console)
 Softmod using exploited gamesave hack, allows to install emulators and play backup ISO games
+![alt text](https://i.imgur.com/gn44dZc.jpg)
+
 * tutorial video: [Link](https://www.youtube.com/user/gotbletu)
 * offical website: [Link](https://www.youtube.com/user/gotbletu)
 
@@ -53,16 +55,16 @@ Softmod using exploited gamesave hack, allows to install emulators and play back
 - Softmod Installer Deluxe > Backup / Restore Features > **Create Eeprom Backup** > **Move Eeprom to E** > Yes
 - Softmod Installer Deluxe > Backup / Restore Features > **Create MS Backup** > Yes > OK
 - Softmod Installer Deluxe > **Install Dual Boot Softmod** > Hacked Dash / **MS Dash** > Virtual C+Eeprom for **HD** > Install **UnleashX** Dashboard > Yes
-- Eject Splinter Cell Game Disc (It might reboot the system quickly)
-- If it does not reboot into the UnleashX program to continue installing then **Manually poweroff and then on the xbox**
-- It will Finish the final installation once it resets itself, then **you are done with the softmod**
+- It will shutdown
+- Power on Xbox
+- Eject Disc
+- Press A to complete the install
 
-### enable FTP access ( change Static IP to DHCP )
+### enable FTP access ( Softmoded Xbox )
 
 - Connect Cat5 Ethernet Cable to the Xbox from Router
-- Xbox UnleashX Dashboard > System > Boot Softmod Menu > Settings > Network > Type > hit A > **DHCP** > Save and Exit
-- Xbox UnleashX Dashboard > System > Boot Softmod Menu > Reset Network > You will get a new DHCP IP Address
-- Xbox UnleashX Dashboard > System > Boot Softmod Menu > Restart Xbox
+- Xbox UnleashX Dashboard > System > Settings > Network > Type > hit A > **DHCP** > hit B > Yes
+- Reboot Xbox to get new ip
 
 ### connecting to Xbox via FTP
 
@@ -72,52 +74,51 @@ Softmod using exploited gamesave hack, allows to install emulators and play back
 - port: 21
 
 # remove Clock Capacitor
-*Note: This is a known issue, the xbox capcitor will leak over time. This is what will happen if you dont remove it* ![alt text](https://i.imgur.com/uPbGSn3.jpg)
+*Note: This is a known issue, the xbox capacitor will leak over time. This is what will happen if you dont remove it* ![alt text](https://i.imgur.com/uPbGSn3.jpg)
 
 - Model 1.0-1.5 (Remove it right away, does not require a replacement capacitor)
-  - model 1.4 clock capcitor location (C7G2/C7G3) ![alt text](https://i.imgur.com/WniuNpG.jpg)
+  - model 1.4 clock capacitor location (C7G2/C7G3) ![alt text](https://i.imgur.com/WniuNpG.jpg)
 - Model 1.6 (Gold color capacitor, some say you dont need to remove since this is a pretty good capacitor that usually does not go bad overtime. If you do want to replace it, you need to replace the capacitor with another one) ![alt text](https://i.imgur.com/OWMDzLY.png)
 
 # upgrade Xbox to a bigger Hard Drive via XboxHDM IDE DVD Drive method
-*Info: I have an Xbox 1.6 model, I try the hotswap chimp method but it never worked, it always says OK, OK, Starting then its stuck at that screen forever after entering FATX in chimp2.4, 2.6, 2.61811, 2.61812. So that is why I am using XboxHDM on a PC, which works really well if you have all the hardware and software requirements*
+*Info: I have an Xbox 1.6 model, I try the hotswap chimp method but it never worked, it always says OK, OK, Starting then its stuck at that screen forever after entering FATX in chimp2.4, 2.6, 2.61811, 2.61812. So that is why I am using XboxHDM on a PC, which works everytime*
 
-### requirements
-- PC with motherboard that has IDE port >> [Example](http://images.slideplayer.com/27/9012226/slides/slide_4.jpg)
-- 1 IDE ribbon with 3-way connectors (1 for mobo, 1 for HDD, 1 for DVDROM) >> [Example](http://ecx.images-amazon.com/images/I/41TcYfNpitL._SX355_.jpg)
-- IDE DVDROM Drive (SATA wont work with XboxHDM 1.9, **you can hookup the Xbox IDE DVDROM Drive to PC if you do not have a IDE DVD Drive already**) >> [Example](http://ep.yimg.com/ca/I/itwinkle_2271_230205968)
-- Download XboxHDM 1.9 Software (Xbox Hard Drive Maker) [here](http://www.theisozone.com/downloads/xbox/tools/xbox-hard-drive-maker-v19-xboxhdm/)
+### hardware requirements to use XboxHDM
+- Blank DVD & DVD Burner
+- PC with motherboard that has IDE port ![alt text](http://i.imgur.com/kJt4C0v.jpg)
+- 1 IDE ribbon with 3-way connectors (1 for mobo, 1 for HDD, 1 for DVD Drive) ![alt text](http://i.imgur.com/jYUoyU0.jpg)
+- IDE DVDROM Drive (**SATA wont work** with XboxHDM 1.9)
+  - **Note: you can hookup the Xbox IDE DVDROM Drive to PC if you do not have a IDE DVD Drive already**) ![alt text](http://i.imgur.com/gbGoApb.jpg)
 
-### create XboxHDM disc
-- **Create eeprom backup again and move to E:** Xbox UnleashX Dashboard > System > Boot Softmod Menu > Backup / Restore Features > Create Eeprom Backup > Backup Eeprom > **Move Eeprom to E** > Yes
-- It will be saved to **E:\Backup\Eeprom**
-- Download and Extract **XboxHDM 1.9 (Xbox Hard Drive Maker v19):** [here](http://www.theisozone.com/downloads/xbox/tools/xbox-hard-drive-maker-v19-xboxhdm/)
-- on Linux PC: Open a terminal (going to extract and delete un-needed folders)
+### generate XboxHDM ISO image (on Linux)
+- Files required:
+  - XboxHDM 1.9 http://www.theisozone.com/downloads/xbox/tools/xbox-hard-drive-maker-v19-xboxhdm/
+  - Fresh MS Dashboard 5960 http://www.theisozone.com/downloads/xbox/tools/clean-c-and-e-files-for-xbox/
+  - Your xbox **eeprom.bin** key (get it from **E:\Backup\Eeprom** on your xbox via FTP)
 
 
         $ cd ~/Downloads
         $ atool -x xboxhdm_v1.9.zip
+        $ atool -x Clean_C_E_files.7z
         $ cd ~/Downloads/xboxhdm/linux
         $ rmdir C/ E/
-
-
-- FTP into Xbox: copy the **C and E** folders into your PC **~/Downloads/xboxhdm/linux/**
-- FTP into Xbox: copy the eeprom key to your PC (should be in **E:\Backup\Eeprom\\**) to **~/Downloads/xboxhdm/linux/eeprom/**
-- on Linux PC: Open a terminal (create an iso image with your personal xbox eeprom key)
-
-
-        $ cd ~/Downloads/xboxhdm
-        $ chmod +x make-iso-lin.sh
+        $ cd ~/Downloads/Clean_C_E_files
+        $ mv C/ ~/Downloads/xboxhdm/linux/
+        $ mv E/ ~/Downloads/xboxhdm/linux/
+        # copy your eeprom.bin to path ~/Downloads/xboxhdm/linux/eeprom
+        $ cd ~/Downloads/xboxhdm/linux
         $ ./make-iso-lin.sh
+        # this script will create and output a linux.iso image
+        # use a dvd burning program to burn the iso image
+        # i use cdw program to burn, tutorial https://www.youtube.com/watch?v=kl-MxRferp4
 
 
-- Use any Burning Program: Burn **linux.iso** we just created with XboxHDM at 4x slow speeds
-- Since I didnt have a regular PC IDE DVDROM Drive, **I had to use the Xbox DVD Drive**
-- **Put in the XboxHDM Disc we just burn into the Xbox DVD Drive**
-- **To avoid the Xbox from auto shutting off** when we use its DVD Drive on our PC. We have to boot the Xbox up with everything connected in working condition, then **pull out the IDE cable from the DVD drive while the Xbox is still running** and then hook that up to the IDE Cable that is coming out from your PC. **Do not poweroff the Xbox** since we need it to keep power to the DVD Drive.
-- **Disconnect all your hard drive on your PC that is not going to be used to format**
-- Make sure the jumper is set to Master on your Hard Drive
-- Connect the 3-way IDE Ribbon Cable from the PC motherboard to the Hard Drive then to the Xbox DVD Drive
-- Power on your PC (**Note: Make sure IDE is NOT disable in your BIOS**, some people disable since it is old)
+### format new Hard Drive using XboxHDM
+- **Disconnect all your hard drive on your PC that is NOT going to be used to format**
+- Connect the 3-way IDE Ribbon Cable from the PC motherboard to Hard Drive and DVD Drive
+- Make sure the **jumper is set to Master** on your Hard Drive ![alt text](https://i.imgur.com/H6iUk1E.jpg)
+- Power on your PC & put in the xboxhdm disc we just burned
+- (**Note: Make sure IDE is NOT disable in your BIOS**, some people disable since it is old)
 - Wait for the Disc to boot into XboxHDM, if not, you might have to hit **F12** to get the boot menu then just select CD or DVD drive
 - At XboxHDM:
 
@@ -127,9 +128,13 @@ Softmod using exploited gamesave hack, allows to install emulators and play back
         $ unlockhd -a
         $ reboot
 
-        # build new hard drive from
+        # build new hard drive from scratch
         $ 1
         $ xboxhd
+        $ yes
+        $ 1
+        $ yes
+        $ yes (if drive is over 8GB then create F: partition else type "no" )
         $ yes (type yes to every prompt, there is going to be a few of them)
         $ 8 (to quit)
         $ reboot
@@ -137,19 +142,21 @@ Softmod using exploited gamesave hack, allows to install emulators and play back
         # lock xbox hdd (need to lock the hdd else it wont work on xbox)
         $ 3
         $ lockhd -a
+        $ y
         $ halt
         - Manually press/hold the power button on your PC to shutdown
-        - Power off the Xbox Console also
 
 
-- **You are done with building your New Hard Drive for Xbox**. Put in your new Hard Drive into your Xbox and test if it works.
-- Not sure why but I had to **redo the softmod again** to get UnleashX Dashboard
+- **You are done with building your New Hard Drive for Xbox**.
+- Put in your new Hard Drive into your Xbox and test if it works.
+- **Redo the softmod again** to get UnleashX Dashboard
 - Make sure to enable FTP via **DHCP** on the xbox as well
 
 ### partition the new Hard Drive
 
 - Since we have a bigger Hard Drive now we are going to partition it to use all the space.
-- Download and Extract XBPartitioner 1.3 [here](http://www.theisozone.com/downloads/xbox/homebrew-apps/xbpartioner-13/)
+- Download and Extract XBPartitioner 1.3
+  - http://www.theisozone.com/downloads/xbox/homebrew-apps/xbpartioner-13/
 - FTP into Xbox: put **XBpartitioner-1.3 folder** into **E:\Apps\XBpartitioner-1.3\\**
 - reboot the xbox
 - Xbox UnleashX Dashboard > Applications > XBpartitioner
@@ -157,8 +164,9 @@ Softmod using exploited gamesave hack, allows to install emulators and play back
 - **Press Start** to partition
 - **Press Y** to confirm, it will format partition now
 - **Press Back then B ** to exit and quit
-- It will reboot
+- It will reboot, if not then hold the power button to manually reboot
 - Now check your Hard Drive Space on the UnleashX Dashboard. C: E: F: Drives should be different
+- Cleanup: **Delete** XBpartitioner from **E:\Apps\XBpartitioner-1.3\\**
 
 
 ### adding original xbox games ISO to the xbox
@@ -194,11 +202,7 @@ Softmod using exploited gamesave hack, allows to install emulators and play back
   - Sega Master System: Dega X
     - Dega X is an Sega Master System / GameGear Emulator for the Original Xbox
   - Killer Instinct XXX
-    - KIxxx (Killer Instinct XXX) is an ultra 64 (yes the arcade one) emulator for original Xbox, it only emulates Killer Instinct 1 and Killer Instinct 2. It is based on U64x from Lantus which is based on U64PC. This is the recommended and more popular emulator to play Killer Instinct 1 & 2 on the original Xbox.- 
-  - 
-    - 
-  - 
-    - 
+    - KIxxx (Killer Instinct XXX) is an ultra 64 (yes the arcade one) emulator for original Xbox, it only emulates Killer Instinct 1 and Killer Instinct 2. It is based on U64x from Lantus which is based on U64PC. This is the recommended and more popular emulator to play Killer Instinct 1 & 2 on the original Xbox.
 
 ### xbox filename length limit
 - 42 characters including extension
@@ -233,27 +237,40 @@ Softmod using exploited gamesave hack, allows to install emulators and play back
   - requires a few wires
 
 ### Flash the TSOP Chip
-*Warning: Make sure the power does not go out else it will be bricked while flashing TSOP*
+*Info: after you have solder the joints on the motherboard to disable write protection, now you can flash the Xbox to use a differen BIOS*
 
-- Put in Hexen Boot Disc into Xbox DVD Drive
+**Warning: Make sure the power does not go out else it will bricked your Xbox while flashing TSOP**
+
+- Power on wait for it to boot into the dashboard
+- Put in Hexen Boot Disc
+- Dashboard > Launch DVD > Press A
+  - **(Note: Some DVD Drive wont read certain DVDR+- Disc, maybe burn a few Hexen Boot Disc to different brands)**
 - Choose Your Chip BIOS:
 - (**WARNING: Make sure the BIOS size is less or equal to the chip size**)
   - For Hynix, Hyundai, ST Only
-    - Hexen > 3. TSOP Flash/Chipped Xbox Tools > 3.2 Modchip/TSOP Flash (Not Winbond) > Yes > Will load Evolution X > [Pick your BIOS to Flash]
+    - Hexen > 3. TSOP Flash/Chipped Xbox Tools > 3.2 Modchip/TSOP Flash **(Not Winbond)** > Yes > Will load Evolution X
       - For **256KB TSOP**: Evolution X > Flash 256k BIOS, 1.0-1.5 > **iND-BIOS.5003.67 F and G**
       - For **1MB TSOP**: Evolution X > Flash 512k BIOS, 1.0-1.5 > **X2.5035 F and G**
   - For Winbond Only (**256k BIOS**)
-    - Hexen > 3. TSOP Flash/Chipped Xbox Tools > 3.3 Winbond or Sharp > **3.3.1 Flash iND-BIOS.5003.67 (F and G)**
+    - Hexen > 3. TSOP Flash/Chipped Xbox Tools > 3.3 Winbond or Sharp > **3.3.1 Flash iND-BIOS.5003.67 (F and G)** > Yes > Will Load Gentoox Loader (XBE) v6.05
+    - Gentoox Loader (XBE) v6.05 > Advanced > Flash Menu > **HDD Flash** > bios.bin > Press A > Xbox will reboot when done and load the new BIOS
+      - **(Note: Move Dpad to Cancle Countdown timer in Gentoox, make sure to use a 1st Party controller by Microsoft)**
   - For Sharp Only
     - Hexen > 3. TSOP Flash/Chipped Xbox Tools > 3.3 Winbond or Sharp > **Sharp Only Only Use On A Sharp TSOP**
+    - **(Note: Move Dpad to Cancle Countdown timer in Gentoox, make sure to use a 1st Party controller by Microsoft)**
+    - Gentoox Loader (XBE) v6.05 > Advanced > Flash Menu > **HDD Flash**
+    - Now is time to **connect the two wires together** on the top write-enable point
+    - bios.bin > Press A > Xbox will reboot when done and load the new BIOS
 - **>>Time to remove the Softmod Now That the Xbox is TSOP<<**
-- After Flashing is done it will reboot. The xbox loading screen will be different if it worked. Make sure it reboot back into the Hexen Boot Disc
-- Hexen > 3. TSOP Flash/Chipped Xbox Tools > 3.5 Chipped/Flashed Xbox Disk Upgrades > 3.5.2 Clean C partition after TSOP flash
-  - **Passcode**: A Y B X START > Yes
+- After Flashing is done it will reboot into the new BIOS screen, if the TSOP Flash was sucessful
+- Shutdown the xbox again and boot it backup manually
+- Wait until the Dashboard loads then put in Hexen Boot Disc
+- Dashboard > Launch DVD > Press A
+- Hexen > 3. TSOP Flash/Chipped Xbox Tools > 3.5 Chipped/Flashed Xbox **Disk Upgrades** > 3.5.2 **Clean C partition** after TSOP flash
+  - **Passcode**: A Y B X START > Yes > Yes
 - Hexen > 3. TSOP Flash/Chipped Xbox Tools > 3.6 Disk Lock/Unlock And eeprom Backup > Yes > Will load Evolution X
-  - Evolution X > Backup eeprom
-  - Evolution X > Unlock Disk > Yes
-- Exit everything, reboot and remove Hexen Boot Disc. Your Done Son!
+  - Evolution X > Unlock Disk > Press A few times to accept > Yes > Press B few times to go back
+- Exit everything, reboot and remove Hexen Boot Disc. You're Done Son!
 
 
 # TSOP Modded Hard Drive Upgrade
@@ -275,7 +292,8 @@ Softmod using exploited gamesave hack, allows to install emulators and play back
 - Eject Disk and Reboot
 
 ### references
-- http://xboxdrives.x-pec.com/?p=list
+- HDD Compatibility List http://xboxdrives.x-pec.com/?p=list
+- XboxHDM http://www.theisozone.com/tutorials/xbox/general/xboxhdm-v19-for-dummies/
 - http://vault-tec.info/post/90476753721/original-xbox-tricks
 - http://xbmcxbox.blogspot.com/p/dashboard-5960.html
 - http://cirreus.com/ar/xbox.html
