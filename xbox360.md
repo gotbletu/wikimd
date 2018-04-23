@@ -7,6 +7,10 @@ The JTAG modification is a software hack based upon an exploitable SMC which is 
 
 The RGH modification is a time based attack on the CPU that glitches the chip, and allows a moment for the exploit to take place and unsigned code to be run.
 
+### Looking For Missing PowerBrick
+  - PowerBrick and Console Motherboard ![alt text](https://i.imgur.com/yNU1sXV.png)
+
+
 ### What Xbox 360 Model Do I Have?
   - PHAT and SLIM ![alt text](https://i.imgur.com/Ffdj5OD.jpg)
 
@@ -48,6 +52,15 @@ The RGH modification is a time based attack on the CPU that glitches the chip, a
 - PC > J-Runner (run as admin) > Tools > Update JR-P fw > [jrunner/common/**PICFLASH_E_1_0_5-JRP-V2.HEX**]
   - Note: once its done, you will see the JR Programmer Logo in JRunner, and the light will be green
 
+### Reflash Original Stock Nand
+- Connect JR Programmer V2 > USB > PC
+- PC > J-Runner (run as admin) > Load Source > [your_stock_nand.bin]
+- PC > J-Runner (run as admin) >  __[Retail]__
+- PC > J-Runner (run as admin) >  Build XeBuild
+- PC > J-Runner (run as admin) >  __[Retail]__
+  - Note: if J-Runner switches to something else make sure is back on Retail
+- PC > J-Runner (run as admin) > Write Nand
+
 
 ## RGH 1.2 Jasper and Falcon PHAT Xbox 360
 
@@ -56,6 +69,7 @@ The RGH modification is a time based attack on the CPU that glitches the chip, a
 - JR Programmer or Nand-X
 - Soldering Iron
 - Flux
+- 40 Pin 1x40 Single Row Male 2.54mm Breakable Pin Header
 
 ### Download Software
 - JR-Programmer V2 Drivers: http://www.weekendmodder.com/JRPv2_drivers.zip
@@ -416,9 +430,9 @@ The RGH modification is a time based attack on the CPU that glitches the chip, a
 - Copy Compatibility folder to XBOX360:/HDDX/Compatibility
 - Now Start any Original Xbox Games
 
-## CR4 Muffin Trinity Xbox 360 Slim (via CoolRunner Rev C)
- 
+## RGH: CR4 Muffin Trinity Xbox 360 Slim (via CR_RevC)
 - Source: https://www.youtube.com/watch?v=5Liw1TtwoOU
+- Sync with Controller 1st before starting
 - CoolRunner Rev C
   - Remove JP
   - Remove C8
@@ -432,13 +446,38 @@ The RGH modification is a time based attack on the CPU that glitches the chip, a
   - C (POST) = FT5R17 (Back) - {scatter plot} - yellow wire
   - B (CLK)  = FT3N2 (Back) - purple wire cut #1
   - A        = N/A
-  - GND      = Ground to Case or J2G3 - black wire
-  - 3v3      = Power to J2G3 - red wire
+  - GND      = Ground to Case or J2C3 - black wire
+  - 3v3      = Power to J2C3 - red wire
 - ![alt text](https://i.imgur.com/BTW1dFg.jpg)
 
 
+### Emulators
+Current emulator versions:
+FCE360-V0.6
+mame_0.72_Release2
+Snes360_v0.32_Beta
+Genesis-Plus-360-0.18-Beta-Version-XEX
+
+Directory for Hdd:
+Snes = hdd:\Emus\Snes360\roms
+GenesisPlus = hdd:\Emus\genesis360\roms
+Mame = hdd:\Emus\mame\roms   (Make sure you change the option file like I show you in Part 2)
+
+Directory for USB Storage Device:
+Snes = usb:\_Emus\Snes360\roms (You MUST have the _)
+GenesisPlus = usb:\_Emus\genesis360\roms   (You MUST have the _)
+Mame = USB:\Emus\mame\roms   (Make sure you change the option file like I show you in Part 2)
+
+
+### FTP Speed Up
+- Source: https://www.xbmc4xbox.org.uk/forum/viewtopic.php?t=1012
+- PC > Filezilla > Edit > Settings > Transfers> Maximum simultaneous transfers: [9]
+- PC > Filezilla > Edit > Settings > Transfers> File Types > Default transfer type: [Binary]
+- PC > Filezilla > Server > Force showing hidden files [X]
+- OGXbox > UnleashX > Xbox Admin > System > Settings > Network>Set Max No Of Users to [10]
+- OGXbox > Reboot
+
 ### references
-- CR4 Muffin Trinity Install : https://www.youtube.com/watch?v=5Liw1TtwoOU
 - ReFlash JR Programmer V2 Firmware: https://www.youtube.com/watch?v=WXsD7yB7-Os
 - List of Compatability for Original Xbox games https://support.xbox.com/en-US/legacy-devices/original-console/play-original-games
 - 2017 Updated JTAG RGH Tutorials by xxModdedWarfarexx https://www.youtube.com/playlist?list=PLn7ji3VsPy3FCoZ5E3zWz5tS5iWbysPZX
