@@ -8,7 +8,7 @@ The JTAG modification is a software hack based upon an exploitable SMC which is 
 The RGH modification is a time based attack on the CPU that glitches the chip, and allows a moment for the exploit to take place and unsigned code to be run.
 
 ### Looking For Missing PowerBrick
-  - PowerBrick and Console Motherboard ![alt text](https://i.imgur.com/yNU1sXV.png)
+  - Phat PowerBrick, Amps, Console Port ![alt text](https://i.imgur.com/bKUCwc9.png)
 
 
 ### What Xbox 360 Model Do I Have?
